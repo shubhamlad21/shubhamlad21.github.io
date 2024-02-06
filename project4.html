@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Button Size Increase</title>
+    <style>
+        #button1, #button2 {
+            border-radius: 12px; /* Rounded corners */
+            color: white;
+            border: none;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+            background-size: 100% 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        #button1 {
+            padding: 10px;
+            background-image: linear-gradient(to bottom right, #4CAF50, #388E3C); /* Green gradient */
+        }
+
+        #button1:hover {
+            background-image: linear-gradient(to bottom right, #388E3C, #2E7D32); /* Darker green gradient */
+        }
+
+        #button2 {
+            padding: 10px;
+            background-image: linear-gradient(to bottom right, #008CBA, #007B9A); /* Blue gradient */
+        }
+
+        #button2:hover {
+            background-image: linear-gradient(to bottom right, #007B9A, #006984); /* Darker blue gradient */
+        }
+
+        #valentineText {
+            font-size: 3em; /* Larger font size */
+            text-align: center;
+            margin-bottom: 20px;
+            color: #FF0000; /* Red */
+            font-family: 'Courier New', monospace; /* Monospace font */
+        }
+
+        #container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #gifContainer {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #buttonContainer {
+            margin-left: 20px;
+        }
+
+        #gif {
+            max-width: 90%; /* Make the gif cover most of the screen */
+            max-height: 90%;
+        }
+    </style>
+</head>
+<body>
+    <div id="valentineText">Will you be my Valentine?</div>
+    <div id="container">
+        <div id="gifContainer">
+            <img id="gif" src="panda.gif" alt="Cute panda holding a rose">
+            <div id="buttonContainer">
+                <button id="button1">Yes</button>
+                <button id="button2">No</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var messages = [
+            'Are you sure?',
+            'You might regret it!',
+            'Really? Think again!',
+            'Come on, don\'t be shy! Give it a shot!',
+            'Imagine all the fun we could have!',
+            'I promise it will be worth it!',
+            'Don\'t let this opportunity slip away!',
+            'Just say yes! What do you have to lose?',
+            'You don\'t want to miss out on this, trust me!',
+            'I have made this especially for you!',
+            'Say yes and let the magic begin!',
+            'You\'re breaking my heart!',
+            'I would be sad. Say yes!',
+            'Last chance! Say yes and make my day!',
+            'You are leaving me no choice! Say yes!'
+        ];
+        var index = 0;
+
+        document.getElementById('button1').addEventListener('click', function() {
+            document.getElementById('gif').src = "heart.gif"; // Change the gif when the 'Yes' button is clicked
+            document.getElementById('valentineText').style.display = 'none'; // Hide the text when the 'Yes' button is clicked
+            document.getElementById('button1').style.display = 'none'; // Hide the 'Yes' button when it is clicked
+            document.getElementById('button2').style.display = 'none'; // Hide the 'No' button when the 'Yes' button is clicked
+        });
+
+        document.getElementById('button2').addEventListener('click', function() {
+            var button1 = document.getElementById('button1');
+            var currentPadding = parseInt(window.getComputedStyle(button1, null).getPropertyValue('padding'));
+            button1.style.padding = (currentPadding + 5) + "px";
+
+            this.innerHTML = messages[index];
+            index = (index + 1) % messages.length;
+
+            if (index === 0) {
+                this.style.display = 'none'; // Hide the button after all messages have been displayed
+            }
+        });
+    </script>
+</body>
+</html>
