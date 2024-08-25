@@ -5,16 +5,16 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(135deg, #4e0547, #1b0a2a);
+    background: linear-gradient(135deg, #274043, #2A262E); /* Japanese Indigo and Charleston Green */
     margin: 0;
     user-select: none;
-    color: #ffffff;
+    color: #FFD678; /* Jasmine */
 }
 
 /* Container for the quiz */
 #quiz-container {
     text-align: center;
-    background: linear-gradient(135deg, #6e0072, #1a0031);
+    background: linear-gradient(135deg, #7E3E27, #274043); /* Russet and Japanese Indigo */
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
@@ -32,13 +32,13 @@ body {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
-    color: #ffffff;
+    color: #FFD678; /* Jasmine */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* Question box styling */
 .question-box {
-    background-color: #6a0dad;
+    background-color: #D4A657; /* Indian Yellow */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
@@ -49,7 +49,7 @@ body {
 /* Question text */
 .question-text {
     font-size: 18px;
-    color: #f0f0f0;
+    color: #2A262E; /* Charleston Green */
     margin-bottom: 20px;
 }
 
@@ -63,8 +63,8 @@ body {
 /* Option buttons styling */
 .option {
     padding: 12px;
-    background: linear-gradient(135deg, #ff00ff, #ff5c5c);
-    color: white;
+    background: linear-gradient(135deg, #FFD678, #FFC347); /* Brighter Jasmine */
+    color: #2A262E; /* Charleston Green */
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -75,15 +75,16 @@ body {
 }
 
 .option:hover {
-    background-color: #9400d3;
+    background-color: #F7B547; /* Brighter Indian Yellow */
     transform: scale(1.05);
 }
+
 
 /* Timer styling */
 #timer {
     font-size: 20px;
-    background-color: #ff2323;
-    color: #ffffff;
+    background-color: #7E3E27; /* Russet */
+    color: #FFD678; /* Jasmine */
     padding: 10px 15px;
     border-radius: 5px;
     position: fixed;
@@ -97,24 +98,24 @@ body {
 .score {
     margin-top: 20px;
     font-size: 18px;
-    color: #ffffff;
+    color: #FFD678; /* Jasmine */
 }
 
 /* Progress bar container */
 .progress-bar {
     position: relative;
-    background: #e0e0e0;
+    background: #D4A657; /* Indian Yellow */
     border-radius: 5px;
     height: 15px;
     width: 100%;
-    border: 1px solid #ccc;
+    border: 1px solid #7E3E27; /* Russet */
     margin-bottom: 20px;
     overflow: hidden;
 }
 
 /* Progress bar fill */
 .progress-bar-fill {
-    background: linear-gradient(135deg, #4caf50, #81c784);
+    background: linear-gradient(135deg, #274043, #2A262E); /* Japanese Indigo and Charleston Green */
     height: 100%;
     width: 0%;
     transition: width 0.4s ease-in-out;
@@ -126,7 +127,7 @@ body {
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
-    color: #44005a;
+    color: #7E3E27; /* Russet */
     font-size: 12px;
     font-weight: bold;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
@@ -134,8 +135,8 @@ body {
 
 /* Lifeline and help buttons styling */
 #lifeline-button, #ask-colleague-button {
-    background-color: #28a745;
-    color: white;
+    background-color: #274043; /* Japanese Indigo */
+    color: #FFD678; /* Jasmine */
     border: none;
     padding: 10px 20px;
     font-size: 16px;
@@ -146,7 +147,7 @@ body {
 }
 
 #lifeline-button:hover, #ask-colleague-button:hover {
-    background-color: #218838;
+    background-color: #7E3E27; /* Russet */
 }
 
 #lifeline-button:disabled, #ask-colleague-button:disabled {
@@ -166,8 +167,8 @@ body {
 }
 
 #helplines-container button {
-    background-color: #ffffff;
-    color: rgb(0, 0, 0);
+    background-color: #FFD678; /* Jasmine */
+    color: #274043; /* Japanese Indigo */
     border: none;
     border-radius: 5px;
     padding: 10px;
@@ -177,5 +178,5 @@ body {
 }
 
 #helplines-container button:hover {
-    background-color: #0056b3;
+    background-color: #D4A657; /* Indian Yellow */
 }
