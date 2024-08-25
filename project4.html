@@ -1,124 +1,183 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Will You?</title>
-    <style>
-        #button1, #button2 {
-            border-radius: 12px; /* Rounded corners */
-            color: white;
-            border: none;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            transition-duration: 0.4s;
-            cursor: pointer;
-            box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
-            background-size: 100% 100%;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-
-        #button1 {
-            padding: 10px;
-            background-image: linear-gradient(to bottom right, #4CAF50, #388E3C); /* Green gradient */
-        }
-
-        #button1:hover {
-            background-image: linear-gradient(to bottom right, #388E3C, #2E7D32); /* Darker green gradient */
-        }
-
-        #button2 {
-            padding: 10px;
-            background-image: linear-gradient(to bottom right, #008CBA, #007B9A); /* Blue gradient */
-        }
-
-        #button2:hover {
-            background-image: linear-gradient(to bottom right, #007B9A, #006984); /* Darker blue gradient */
-        }
-
-        #valentineText {
-            font-size: 3em; /* Larger font size */
-            text-align: center;
-            margin-bottom: 20px;
-            color: #FF0000; /* Red */
-            font-family: 'Courier New', monospace; /* Monospace font */
-        }
-
-        #container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #gifContainer {
-            position: relative;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        #buttonContainer {
-            margin-left: 20px;
-        }
-
-        #gif {
-            max-width: 90%; /* Make the gif cover most of the screen */
-            max-height: 90%;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz with Timer</title>
+    <link rel="stylesheet" href="project4.css">
 </head>
-<body>
-    <div id="valentineText">Will you be my Valentine?</div>
-    <div id="container">
-        <div id="gifContainer">
-            <img id="gif" src="panda.gif" alt="Cute panda holding a rose">
-            <div id="buttonContainer">
-                <button id="button1">Yes</button>
-                <button id="button2">No</button>
+<body>        
+
+    <div id="quiz-container">
+        <div class="progress-bar">
+            <div class="progress-bar-fill" id="progress-bar-fill">
+                <span id="progress-text">0%</span>
             </div>
         </div>
+        
+        <h1 id="question-heading">Question 1</h1>
+        <div class="question-box">
+            <p class="question-text">Which Vedic text is considered the oldest and forms the core of Vedic literature in Hinduism?</p>
+            <div class="options">
+                <button class="option" onclick="checkAnswer(this, false)"> Samaveda</button>
+                <button class="option" onclick="checkAnswer(this, true)"> Rigveda</button>
+                <button class="option" onclick="checkAnswer(this, false)"> Yajurveda</button>
+                <button class="option" onclick="checkAnswer(this, false)"> Atharvaveda</button>
+            </div>
+        </div>
+        
+        <div class="question-box">
+            <p class="question-text">Who was the first Indian to be elected as a member of the British House of Commons?</p>
+            <div class="options">
+                <button class="option" onclick="checkAnswer(this, false)"> Mahatma Gandhi</button>
+                <button class="option" onclick="checkAnswer(this, false)"> Bal Gangadhar Tilak</button>
+                <button class="option" onclick="checkAnswer(this, true)"> Dadabhai Naoroji</button>
+                <button class="option" onclick="checkAnswer(this, false)"> Lala Lajpat Rai</button>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <p class="question-text">In which year was the partition of Bengal, initiated by Lord Curzon, annulled?</p>
+            <div class="options">
+                <button class="option" onclick="checkAnswer(this, false)"> 1905</button>
+                <button class="option" onclick="checkAnswer(this, false)"> 1907</button>
+                <button class="option" onclick="checkAnswer(this, true)"> 1911</button>
+                <button class="option" onclick="checkAnswer(this, false)"> 1913</button>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <p class="question-text">Which Indian state is known for having the highest literacy rate as per the 2011 Census?</p>
+            <div class="options">
+                <button class="option" onclick="checkAnswer(this, false)"> Tamil Nadu</button>
+                <button class="option" onclick="checkAnswer(this, false)"> Maharashtra</button>
+                <button class="option" onclick="checkAnswer(this, true)"> Kerala</button>
+                <button class="option" onclick="checkAnswer(this, false)"> Goa</button>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <p class="question-text">Who was the first woman President of the United Nations General Assembly from India?</p>
+            <div class="options">
+                <button class="option" onclick="checkAnswer(this, false)"> Indira Gandhi</button>
+                <button class="option" onclick="checkAnswer(this, false)"> Sarojini Naidu</button>
+                <button class="option" onclick="checkAnswer(this, true)"> Vijaya Lakshmi Pandit</button>
+                <button class="option" onclick="checkAnswer(this, false)"> Sushma Swaraj</button>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <p class="question-text">Which Indian river is known as the 'Sorrow of Bihar' due to its frequent flooding?</p>
+            <div class="options">
+                <button class="option" onclick="checkAnswer(this, false)"> Ganga</button>
+                <button class="option" onclick="checkAnswer(this, false)"> Brahmaputra</button>
+                <button class="option" onclick="checkAnswer(this, true)"> Kosi</button>
+                <button class="option" onclick="checkAnswer(this, false)"> Yamuna</button>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <p class="question-text">Which Mughal emperor commissioned the construction of the Jama Masjid in Delhi?</p>
+            <div class="options">
+                <button class="option" onclick="checkAnswer(this, false)"> Akbar</button>
+                <button class="option" onclick="checkAnswer(this, false)"> Jahangir</button>
+                <button class="option" onclick="checkAnswer(this, true)"> Shah Jahan</button>
+                <button class="option" onclick="checkAnswer(this, false)"> Aurangzeb</button>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <p class="question-text">Which Indian state was the last to be formed, achieving statehood in 2000?</p>
+            <div class="options">
+                <button class="option" onclick="checkAnswer(this, false)"> Uttarakhand</button>
+                <button class="option" onclick="checkAnswer(this, true)"> Jharkhand</button>
+                <button class="option" onclick="checkAnswer(this, false)"> Chhattisgarh</button>
+                <button class="option" onclick="checkAnswer(this, false)"> Telangana</button>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <p class="question-text">Which Indian scientist was awarded the Nobel Prize for his work on the scattering of light?</p>
+            <div class="options">
+                <button class="option" onclick="checkAnswer(this, true)"> C.V. Raman</button>
+                <button class="option" onclick="checkAnswer(this, false)"> Homi Bhabha</button>
+                <button class="option" onclick="checkAnswer(this, false)"> A.P.J. Abdul Kalam</button>
+                <button class="option" onclick="checkAnswer(this, false)"> Jagadish Chandra Bose</button>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <p class="question-text">Who is the author of the famous book "The Discovery of India"?</p>
+            <div class="options">
+                <button class="option" onclick="checkAnswer(this, false)"> Rabindranath Tagore</button>
+                <button class="option" onclick="checkAnswer(this, true)"> Jawaharlal Nehru</button>
+                <button class="option" onclick="checkAnswer(this, false)"> Mahatma Gandhi</button>
+                <button class="option" onclick="checkAnswer(this, false)"> S. Radhakrishnan</button>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <p class="question-text">Which Indian classical dance form is traditionally associated with Tamil Nadu?</p>
+            <div class="options">
+                <button class="option" onclick="checkAnswer(this, false)"> Kathak</button>
+                <button class="option" onclick="checkAnswer(this, false)"> Odissi</button>
+                <button class="option" onclick="checkAnswer(this, true)"> Bharatanatyam</button>
+                <button class="option" onclick="checkAnswer(this, false)"> Manipuri</button>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <p class="question-text">Which city is known as the "Silicon Valley of India"?</p>
+            <div class="options">
+                <button class="option" onclick="checkAnswer(this, false)"> Hyderabad</button>
+                <button class="option" onclick="checkAnswer(this, false)"> Pune</button>
+                <button class="option" onclick="checkAnswer(this, false)"> Mumbai</button>
+                <button class="option" onclick="checkAnswer(this, true)"> Bengaluru</button>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <p class="question-text">In which Indian state is the Sun Temple of Konark located?</p>
+            <div class="options">
+                <button class="option" onclick="checkAnswer(this, false)"> Gujarat</button>
+                <button class="option" onclick="checkAnswer(this, true)"> Odisha</button>
+                <button class="option" onclick="checkAnswer(this, false)"> Karnataka</button>
+                <button class="option" onclick="checkAnswer(this, false)"> Rajasthan</button>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <p class="question-text">Which Indian national leader’s autobiography is titled "The Story of My Experiments with Truth"?</p>
+            <div class="options">
+                <button class="option" onclick="checkAnswer(this, true)"> Mahatma Gandhi</button>
+                <button class="option" onclick="checkAnswer(this, false)"> Jawaharlal Nehru</button>
+                <button class="option" onclick="checkAnswer(this, false)"> Subhas Chandra Bose</button>
+                <button class="option" onclick="checkAnswer(this, false)"> Sardar Patel</button>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <p class="question-text">Which is the oldest mountain range in India?</p>
+            <div class="options">
+                <button class="option" onclick="checkAnswer(this, false)"> Himalayas</button>
+                <button class="option" onclick="checkAnswer(this, true)"> Aravalli Range</button>
+                <button class="option" onclick="checkAnswer(this, false)"> Vindhya Range</button>
+                <button class="option" onclick="checkAnswer(this, false)"> Western Ghats</button>
+            </div>
+        </div>
+        <div class="score" id="score">0</div>
     </div>
 
-    <script>
-        var messages = [
-            'Are you sure?',
-            'You might regret it!',
-            'Really? Think again!',
-            'Come on, don\'t be shy! Give it a shot!',
-            'Imagine all the fun we could have!',
-            'I promise it will be worth it!',
-            'Don\'t let this opportunity slip away!',
-            'Just say yes! What do you have to lose?',
-            'You don\'t want to miss out on this, trust me!',
-            'I have made this especially for you!',
-            'Say yes and let the magic begin!',
-            'You\'re breaking my heart!',
-            'I would be sad. Say yes!',
-            'Last chance! Say yes and make my day!',
-            'You are leaving me no choice! Say yes!'
-        ];
-        var index = 0;
+        <div id="timer">25</div>
+        
 
-        document.getElementById('button1').addEventListener('click', function() {
-            document.getElementById('gif').src = "heart.gif"; // Change the gif when the 'Yes' button is clicked
-            document.getElementById('valentineText').style.display = 'none'; // Hide the text when the 'Yes' button is clicked
-            document.getElementById('button1').style.display = 'none'; // Hide the 'Yes' button when it is clicked
-            document.getElementById('button2').style.display = 'none'; // Hide the 'No' button when the 'Yes' button is clicked
-        });
+        <div id="helplines-container">
+            <button id="lifeline-button" onclick="useLifeline()">50|50</button>
+            <button id="ask-colleague-button" onclick="askColleague()">Ask Your Colleague</button>
+        </div>
+        
+    <script src="project4.js"></script>
 
-        document.getElementById('button2').addEventListener('click', function() {
-            var button1 = document.getElementById('button1');
-            var currentPadding = parseInt(window.getComputedStyle(button1, null).getPropertyValue('padding'));
-            button1.style.padding = (currentPadding + 5) + "px";
-
-            this.innerHTML = messages[index];
-            index = (index + 1) % messages.length;
-
-            if (index === 0) {
-                this.style.display = 'none'; // Hide the button after all messages have been displayed
-            }
-        });
-    </script>
 </body>
 </html>
