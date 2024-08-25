@@ -78,6 +78,8 @@ function resetOptions() {
     });
 }
 
+
+
 function useLifeline() {
     const options = document.querySelectorAll('.question-box')[currentQuestion].querySelectorAll('.option');
     const incorrectOptions = Array.from(options).filter(option => !option.getAttribute('onclick').includes('true'));
@@ -98,6 +100,7 @@ const askColleagueButton = document.getElementById('ask-colleague-button');
 
 askColleagueButton.addEventListener('click', () => {
     askColleagueButton.disabled = true; // Disable the button on click
+    askColleague();
 });
 
 
