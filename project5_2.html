@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register MFA Device</title>
+    <link rel="stylesheet" href="project5_2.css">
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script> 
+</head>
+<body>
+    <div class="container">
+        <h1>Register MFA Device</h1>
+        <form id="mfa-form" onsubmit="return validateMfaForm()">
+            <div id="credentials-section">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+
+            <div><br /></div>
+
+            <button type="button" onclick="submitCredentials()">Submit</button>
+            </div>
+            <div id="device-section" style="display: none; margin-top: 20px;">
+                <label for="device-name">Device Name</label>
+                <input type="text" id="device-name" name="device-name" required>
+                <button type="button" onclick="submitDevice()">Submit Device</button>
+            </div>
+            <div id="qr-code-section" style="display: none; margin-top: 20px; text-align: center;">
+                <p>Your MFA QR Code:</p>
+                <canvas id="qr-code" style="margin: 20px auto;"></canvas>
+                <button type="button" onclick="markDeviceRegistered()">Done</button>
+            </div>
+            <p id="device-status" style="margin-top: 20px; display: none; color: green; font-weight: bold;">
+                Device registered successfully!
+            </p>
+        </form>
+    </div>
+
+    <script>
+        function validateMfaForm() {
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+
+            if (!username) {
+                alert('Please enter your username.');
+                return false;
+            }
+            if(!password) {
+                alert('Please enter password.');
+                return false;
+            }
+
+            return true; 
+        }
+
+        function submitCredentials() {
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+
+            if (!username) {
+                alert('Please enter your username.');
+                return false;
+            }
+            
+            if(!password) {
+                alert('Please enter password.');
+                return false; 
+            }
+
+            document.getElementById('credentials-section').style.display = 'none';
+            document.getElementById('device-section').style.display = 'block';
+
+        }
+
+        function submitDevice() {
+            const deviceName = document.getElementById('device-name').value.trim();
+
+            if (!deviceName) {
+                alert('Please enter a device name.');
+                return;
+            }
+            generateQRCode();
+
+            document.getElementById('device-section').style.display = 'none';
+            document.getElementById('qr-code-section').style.display = 'block';
+
+            return false;
+        }
+
+        function generateQRCode() {
+            const qrCodeCanvas = document.getElementById('qr-code');
+            const qrCodeValue = Math.floor(100000 + Math.random() * 900000).toString(); // Generate a 6-digit random code
+            
+            QRCode.toCanvas(qrCodeCanvas, `otpauth://totp/YourApp:${qrCodeValue}?secret=${qrCodeValue}&issuer=YourApp`, {
+                width: 200,
+                margin: 2
+            }, (error) => {
+                if (error) console.error(error);
+            });
+
+            return false;
+        }
+
+        function markDeviceRegistered() {
+            document.getElementById('device-status').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
